@@ -1,5 +1,0 @@
-/\.team-grid {/,/gap: 32px;/ {
-  /gap: 32px;/ a\
-  max-width: 900px;\
-  margin: 0 auto;
-}
