@@ -17,7 +17,16 @@
       <a class="brand" href="#home"
         ><img src="assets/images/smart-learn-logo.png" alt="Smart Learn logo" />
         Smart Learn</a
-      ><button class="menu" aria-controls="nav" aria-expanded="false">
+      ><button
+        class="theme-toggle"
+        type="button"
+        aria-pressed="false"
+        aria-label="Switch to dark mode"
+        title="Switch to dark mode"
+      >
+        <span aria-hidden="true">☾</span><span class="sr theme-toggle-text">Switch to dark mode</span>
+      </button>
+      <button class="menu" aria-controls="nav" aria-expanded="false">
         ☰<span class="sr">Open navigation</span>
       </button>
       <nav id="nav">
@@ -570,7 +579,43 @@
     </footer>
     <script>
       const menu = document.querySelector(".menu"),
-        nav = document.querySelector("nav");
+        nav = document.querySelector("nav"),
+        themeToggle = document.querySelector(".theme-toggle"),
+        themeToggleText = document.querySelector(".theme-toggle-text");
+
+      const applyTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        const isDark = theme === "dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Switch to light mode" : "Switch to dark mode",
+        );
+        themeToggle.setAttribute(
+          "title",
+          isDark ? "Switch to light mode" : "Switch to dark mode",
+        );
+        themeToggle.querySelector("span").textContent = isDark ? "☀" : "☾";
+        themeToggleText.textContent = isDark
+          ? "Switch to light mode"
+          : "Switch to dark mode";
+      };
+
+      const savedTheme = localStorage.getItem("smart-learn-theme");
+      applyTheme(
+        savedTheme ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light"),
+      );
+
+      themeToggle.addEventListener("click", () => {
+        const nextTheme =
+          document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem("smart-learn-theme", nextTheme);
+      });
+
       menu.addEventListener("click", () => {
         const open = nav.classList.toggle("open");
         menu.setAttribute("aria-expanded", open);

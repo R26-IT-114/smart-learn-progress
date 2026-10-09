@@ -1276,3 +1276,12 @@ footer {
 .hero-logo img {
     width: min(390px, 100%)
 }
+
+/* Light and dark colour modes */
+.theme-toggle {display:grid;place-items:center;width:2.35rem;height:2.35rem;margin-left:auto;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}.theme-toggle:hover{background:var(--pale)}
+[data-theme="dark"]{--ink:#e7f0f7;--muted:#aabcc9;--blue:#7fa7ff;--teal:#56cfc7;--pale:#10233a;--line:#29445e;color-scheme:dark}
+[data-theme="dark"] body{background:#0b192b;color:var(--ink)}[data-theme="dark"] header{background:#0d1b2ee8}[data-theme="dark"] .skip,[data-theme="dark"] .outline{background:#10233a}[data-theme="dark"] .hero{background:linear-gradient(115deg,#0b192b 55%,#102d35 55%)}[data-theme="dark"] .hero-card{background:#132a42;box-shadow:0 22px 45px #0006}[data-theme="dark"] .numbers b{background:#1c3855;color:#e7f0f7}[data-theme="dark"] .numbers b:last-child{background:#725a16;color:#fff}[data-theme="dark"] .cards article,[data-theme="dark"] .resources article,[data-theme="dark"] .presentations article,[data-theme="dark"] .team article,[data-theme="dark"] .supervisors article,[data-theme="dark"] .timeline-card,[data-theme="dark"] .tech-item{background:#132a42;border-color:var(--line)}[data-theme="dark"] .overview,[data-theme="dark"] .tech{background:#112d36;border-color:#235666}[data-theme="dark"] .tint,[data-theme="dark"] #about{background:#10233a}[data-theme="dark"] .contact{background:linear-gradient(125deg,#183d78,#146e6a)}[data-theme="dark"] .contact input,[data-theme="dark"] .contact textarea{background:#e9f1f7;color:#142b47}[data-theme="dark"] .hero-logo{background:transparent}[data-theme="dark"] .hero-logo img{mix-blend-mode:normal;border-radius:50%}[data-theme="dark"] .theme-toggle{border-color:#42627b;color:#ffe28a}[data-theme="dark"] .marks-bar{background:#29445e}[data-theme="dark"] .presentation-pending{background:#132a42!important}[data-theme="dark"] .team article small,[data-theme="dark"] .timeline-card p,[data-theme="dark"] .presentation-cards article>p{color:var(--muted)}
+@media(max-width:650px){.theme-toggle{margin-left:auto;margin-right:.35rem}}
+
+/* Centre the theme control between the brand and the navigation */
+.theme-toggle{position:absolute;top:50%;left:50%;margin:0;transform:translate(-50%,-50%)}
