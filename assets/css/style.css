@@ -1279,6 +1279,65 @@ footer {
     width: min(390px, 100%)
 }
 
+/* Purpose-made Smart Learn learning illustration for the hero panel */
+.hero-visual {
+    position: relative;
+    isolation: isolate;
+    /* Keep the learning illustration prominent: roughly 80% of the hero height on desktop. */
+    width: min(620px, 100%);
+    justify-self: center;
+    padding: clamp(.75rem, 2vw, 1.35rem);
+    overflow: hidden;
+    border: 0;
+    border-radius: 52% 48% 43% 57% / 42% 48% 52% 58%;
+    background: radial-gradient(circle at 25% 21%, #efffff 0 4%, transparent 4.5%), linear-gradient(145deg, #dff5ff, #bbece8 55%, #b9ddfb);
+    box-shadow: 0 24px 48px #27516f2e
+}
+
+.hero-visual img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: normal
+}
+
+.hero-visual::before,
+.hero-visual::after {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none
+}
+
+.hero-visual::before {
+    top: 11%;
+    left: 6%;
+    width: 17%;
+    aspect-ratio: 1;
+    border: 2px solid #62a9e9;
+    box-shadow: 0 0 0 11px #ffffff75
+}
+
+.hero-visual::after {
+    right: 2%;
+    bottom: 12%;
+    width: 20%;
+    aspect-ratio: 1;
+    background: #fff4b5b8
+}
+
+[data-theme="dark"] .hero-visual {
+    background: radial-gradient(circle at 25% 21%, #2a6673 0 4%, transparent 4.5%), linear-gradient(145deg, #103a47, #102f3c 55%, #18345a);
+    box-shadow: 0 22px 45px #0008
+}
+
+[data-theme="dark"] .hero-visual::before { border-color: #68c8e5; box-shadow: 0 0 0 11px #8adce522; }
+[data-theme="dark"] .hero-visual::after { background: #e8c95438; }
+
 /* Light and dark colour modes */
 .theme-toggle {display:grid;place-items:center;width:2.35rem;height:2.35rem;margin-left:auto;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}.theme-toggle:hover{background:var(--pale)}
 [data-theme="dark"]{--ink:#e7f0f7;--muted:#aabcc9;--blue:#7fa7ff;--teal:#56cfc7;--pale:#10233a;--line:#29445e;color-scheme:dark}
@@ -1301,3 +1360,11 @@ footer {
 
 /* Four research-component cards */
 .components{margin-top:2rem}.components-heading{margin-bottom:1rem}.components-heading h3{margin:0;font:1.9rem Georgia,serif}.component-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.component-card{padding:1.4rem;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:.7rem;background:#fff}.component-card h3{margin:0;font:1.5rem Georgia,serif}.component-card h4{margin:1.1rem 0 .35rem;color:var(--teal);font-size:.83rem;letter-spacing:.06em;text-transform:uppercase}.component-card p,.component-card li{color:var(--muted);font-size:.87rem}.component-card .component-lead{margin:.6rem 0 0;color:var(--ink);font-weight:650}.component-card ul{margin:.4rem 0;padding-left:1.15rem}.component-card li+li{margin-top:.28rem}.contribution{margin-top:1.25rem!important}[data-theme="dark"] .component-card{background:#132a42;border-color:var(--line)}[data-theme="dark"] .component-card .component-lead{color:var(--ink)}@media(max-width:650px){.component-grid{grid-template-columns:1fr}.component-card{padding:1.15rem}}
+
+.gap-panel{margin-top:1.25rem;padding:1.4rem 1.55rem;border-left:4px solid var(--blue);border-radius:.6rem;background:#f3f8fb}.gap-panel h3{margin:0 0 .85rem}.gap-panel>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem 1.5rem}.gap-panel p{margin:.3rem 0;color:var(--muted);font-size:.88rem}.gap-panel strong{color:var(--ink)}[data-theme="dark"] .gap-panel{background:#132a42;border-color:var(--blue)}[data-theme="dark"] .gap-panel strong{color:var(--ink)}@media(max-width:650px){.gap-panel{padding:1.15rem}.gap-panel>div{grid-template-columns:1fr}}
+
+/* Research-showcase composition inspired by the supplied reference layout */
+#domain{background:linear-gradient(180deg,#fff 0%,#f0f8fd 100%)}#domain>.heading{max-width:850px;margin:0 auto 3rem;text-align:center}#domain>.heading .eyebrow{color:#197fc4}#domain>.heading h2{color:#147fc8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:850;letter-spacing:-.045em}.overview{max-width:1100px;margin:0 auto 1.35rem;padding:1.55rem 1.7rem;border:1px solid #d6e8f1;border-left:0;border-radius:.75rem;background:#fff;box-shadow:0 8px 20px rgba(27,83,124,.07)}.overview h3{color:#17345a}.research-cards{max-width:1100px;margin:0 auto;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}.research-cards article{min-height:205px;padding:1.55rem;border:1px solid #d7e8f1;border-top:4px solid #268dd2;border-radius:.75rem;box-shadow:0 7px 18px rgba(27,83,124,.08)}.research-cards article:nth-child(2){border-top-color:#15aaa4}.research-cards article:nth-child(3){border-top-color:#7968e8}.research-cards article:nth-child(4){border-top-color:#e99c32}.research-cards h3{margin:0 0 .6rem;color:#17345a;font-size:1.08rem}.gap-panel{max-width:1100px;margin:1.35rem auto 0;border-left:0;border-top:4px solid #466fe3;box-shadow:0 7px 18px rgba(27,83,124,.07)}#domain .method{max-width:1100px;margin:1.35rem auto 0;background:#e9f4fb;color:var(--ink);box-shadow:none}#domain .method .eyebrow{color:#16847f}#domain .method h3{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:850}#domain .method li{background:#fff;border:1px solid #d5e6ef;color:#17345a}.components{max-width:1100px;margin:2.75rem auto 0}.components-heading{text-align:center;margin-bottom:1.5rem}.components-heading .eyebrow{color:#197fc4}.components-heading h3{color:#147fc8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:850}.component-grid{gap:1.25rem}.component-card{border-top-color:#1c9bd1;box-shadow:0 7px 18px rgba(27,83,124,.08)}.component-card:nth-child(2){border-top-color:#7c6ce6}.component-card:nth-child(3){border-top-color:#ef9d32}.component-card:nth-child(4){border-top-color:#16a99f}.component-card h3{color:#17345a;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:800}.tech{max-width:1100px;margin:1.35rem auto 0;border-top:4px solid #16847f;border-left:0;border-radius:.75rem;box-shadow:0 7px 18px rgba(27,83,124,.07)}.contribution{max-width:1100px;margin:1.35rem auto 0!important;border-top:4px solid #466fe3}.tech-item{transition:transform .18s ease,box-shadow .18s ease}.tech-item:hover{transform:translateY(-3px);box-shadow:0 9px 17px rgba(27,83,124,.12)}[data-theme="dark"] #domain{background:linear-gradient(180deg,#0b192b 0%,#10233a 100%)}[data-theme="dark"] #domain>.heading h2{color:#83c8ff}[data-theme="dark"] .overview,[data-theme="dark"] #domain .method,[data-theme="dark"] .component-card{background:#132a42;border-color:var(--line);box-shadow:0 8px 20px rgba(0,0,0,.2)}[data-theme="dark"] #domain .method{color:var(--ink)}[data-theme="dark"] #domain .method li{background:#1e4266;border-color:#315673;color:var(--ink)}[data-theme="dark"] .research-cards article{background:#132a42;border-color:var(--line);box-shadow:0 8px 20px rgba(0,0,0,.2)}[data-theme="dark"] .research-cards h3,[data-theme="dark"] .component-card h3{color:var(--ink)}[data-theme="dark"] .components-heading h3{color:#83c8ff}[data-theme="dark"] .tech{box-shadow:0 8px 20px rgba(0,0,0,.2)}@media(max-width:700px){.research-cards{grid-template-columns:1fr}.research-cards article{min-height:auto}}
+
+/* Detailed literature review and bibliography */
+.literature-panel{max-width:1100px;margin:1.35rem auto 0;padding:1.7rem;border:1px solid #d6e8f1;border-top:4px solid #16847f;border-radius:.75rem;background:#fff;box-shadow:0 8px 20px rgba(27,83,124,.07)}.literature-panel h3{margin:.1rem 0 .85rem;color:#17345a;font-size:1.35rem}.literature-panel>p:not(.eyebrow){margin:.8rem 0;color:var(--muted);line-height:1.7}.references{margin-top:1.25rem;border-top:1px solid var(--line)}.references summary{padding:1rem 0;color:var(--blue);font-weight:800;cursor:pointer}.references ol{margin:0;padding:0 0 .25rem 1.35rem}.references li{margin:0 0 .75rem;padding-left:.25rem;color:var(--muted);font-size:.86rem;line-height:1.55}[data-theme="dark"] .literature-panel{background:#132a42;border-color:var(--line);box-shadow:0 8px 20px rgba(0,0,0,.2)}[data-theme="dark"] .literature-panel h3{color:var(--ink)}[data-theme="dark"] .references{border-color:var(--line)}
