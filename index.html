@@ -71,154 +71,38 @@
       <section id="domain">
         <div class="heading">
           <p class="eyebrow">Research domain</p>
-          <h2>Focused on meaningful learner support.</h2>
-          <p>
-            Only the confirmed dyscalculia information is stated below. Other
-            project details remain editable placeholders.
-          </p>
+          <h2>Integrated learning support for young learners.</h2>
+          <p>Smart Learn combines four AI-assisted learning components for Sinhala-speaking children aged 6–8 years.</p>
         </div>
         <article class="overview">
           <h3>Project Overview</h3>
-          <p>
-            Smart Learn brings together interactive educational activities,
-            artificial intelligence, adaptive learning techniques, and progress
-            monitoring to support a more engaging and personalised learning
-            experience for children, parents, teachers, and educational
-            professionals.
-          </p>
-          <p>
-            <strong>Confirmed component focus:</strong> Dyslexia uses AI-based
-            Sinhala voice-interactive reading activities, pronunciation
-            assessment, and adaptive learning. Working Memory uses adaptive
-            memory games, AI-assisted puzzle generation, and progress
-            monitoring. Dyscalculia includes Number Tracing, Number Listening,
-            Number Sorting, Balloon Pop, CNN handwritten digit recognition,
-            supportive feedback, and performance monitoring.
-            <mark>TODO: add approved Dysgraphia description.</mark>
-          </p>
+          <p>Smart Learn is an AI-assisted, adaptive learning platform designed to support Sinhala-speaking children aged 6–8 years who experience difficulties in reading, handwriting, numerical learning, and working memory.</p>
+          <p>Its Dyslexia, Dysgraphia, Dyscalculia, and Working Memory components combine interactive game-based activities, personalised feedback, and performance monitoring. The platform is intended to support children while enabling parents, teachers, and educational professionals to monitor learning progress.</p>
         </article>
-        <div class="cards">
-          <article>
-            <h3>Literature Survey</h3>
-            <p>
-              Multisensory digital activities can combine visual, auditory, and
-              interactive practice to support foundational number learning.
-            </p>
-          </article>
-          <article>
-            <h3>Research Gap</h3>
-            <p>
-              A need remains for child-friendly learning support that connects
-              practice activities, supportive feedback, and meaningful
-              performance records.
-            </p>
-          </article>
-          <article>
-            <h3>Research Problem</h3>
-            <p>
-              How can AI-assisted activities support foundational number
-              learning for children with dyscalculia?
-              <mark>TODO: approved statement.</mark>
-            </p>
-          </article>
-          <article>
-            <h3>Research Objectives</h3>
-            <p>
-              Provide activities, recognise handwritten digits 0–9 with a CNN,
-              give supportive feedback, and record learner performance.
-              <mark>TODO: wider objectives.</mark>
-            </p>
-          </article>
+        <div class="cards research-cards">
+          <article><h3>Literature Survey</h3><p>Research across learning difficulties and cognitive development highlights early support, structured practice, multisensory learning, individualised strategies, child-friendly interaction, and continuous monitoring as important design considerations.</p></article>
+          <article><h3>Research Gap</h3><p>Sinhala-language resources that integrate reading, handwriting, numerical, and memory support are limited. Existing tools are often fragmented, insufficiently adaptive, and provide limited AI-assisted interaction or detailed progress records.</p></article>
+          <article><h3>Research Problem</h3><p>How can an AI-assisted, adaptive, game-based platform support foundational reading, handwriting, numerical, and working-memory skills for Sinhala-speaking children aged 6–8 years while providing personalised activities and meaningful monitoring?</p></article>
+          <article><h3>Research Objectives</h3><p>Develop four interactive components; integrate selected recognition models; provide Sinhala guidance and supportive feedback; personalise activities; record learning outcomes; provide dashboards; and evaluate technical performance and usability.</p></article>
         </div>
         <article class="method">
-          <div>
-            <p class="eyebrow">Methodology</p>
-            <h3>A learner-feedback cycle</h3>
-            <p>
-              Preprocessing and CNN prediction apply where a handwritten digit
-              is submitted.
-            </p>
-          </div>
-          <ol>
-            <li>Learner interaction</li>
-            <li>Response capture</li>
-            <li>Preprocessing</li>
-            <li>CNN prediction</li>
-            <li>Supportive feedback</li>
-            <li>Performance recording</li>
-          </ol>
+          <div><p class="eyebrow">Research methodology</p><h3>A component-based development approach</h3><p>Four specialised learning modules are developed and integrated into a shared platform with AI-assisted interaction, adaptive support, and progress recording.</p></div>
+          <ol><li>Requirements analysis</li><li>Activity design</li><li>AI model development</li><li>Application integration</li><li>Adaptive feedback</li><li>Progress monitoring</li><li>Testing and evaluation</li></ol>
         </article>
+        <div class="components" aria-labelledby="components-title">
+          <div class="components-heading"><p class="eyebrow">Research components</p><h3 id="components-title">Four specialised learning modules</h3></div>
+          <div class="component-grid">
+            <article class="component-card"><h3>Dyslexia</h3><p class="component-lead">AI-assisted Sinhala reading and pronunciation practice, beginning with a literacy pre-assessment that recommends suitable activities.</p><h4>Activities</h4><ul><li>Sinhala letter recognition and letter–sound association</li><li>Two-letter and three-letter word reading</li><li>Pronunciation assessment and adaptive reading games</li></ul><h4>AI and monitoring</h4><p>CNN-based Sinhala speech classification uses MFCC audio features for selected letters and words. The model covers 23 speech categories, with 3,312 augmented MFCC samples, 2,649 training samples, and 16 kHz audio sampling. Reported test accuracy is 89.74% for speech classification only; it does not represent children's reading improvement. Monitoring includes recommended level, responses, accuracy, scores, duration, trends, and practice areas.</p></article>
+            <article class="component-card"><h3>Dysgraphia</h3><p class="component-lead">Adaptive Sinhala handwriting intervention through game-based activities, Sinhala voice instructions, visual feedback, and rewards.</p><h4>Activities</h4><ul><li>Guided tracing and independent letter writing</li><li>Two-letter and three-letter word writing</li><li>Ruled-line writing, mirror-letter correction, and drawing activities</li></ul><h4>AI and monitoring</h4><p>A CNN-based Sinhala handwriting model evaluates selected letters across 15 classes. The dataset contains 1,920 handwriting images from 140 primary-school students, with 128 images per class; Python and FastAPI support AI inference. Monitoring records attempts, time, erase count, recognition confidence, and activities requiring more practice.</p></article>
+            <article class="component-card"><h3>Dyscalculia</h3><p class="component-lead">AI-assisted foundational numerical learning for children who experience difficulty with number skills.</p><h4>Activities</h4><ul><li>Guided tracing and freehand digit writing</li><li>Sinhala audio number listening</li><li>Number sorting, sequencing, Balloon Pop, and number identification</li></ul><h4>AI and monitoring</h4><p>A CNN recognises handwritten digits 0–9 from canvas input. The MNIST-based model uses augmentation and image preprocessing, including cropping, centering, grayscale conversion, resizing, and normalisation. Supportive feedback and monitoring record responses, accuracy, response time, attempts, and numerical areas requiring practice.</p></article>
+            <article class="component-card"><h3>Working Memory</h3><p class="component-lead">Adaptive cognitive learning games that practise visual memory, sequential recall, and information retention.</p><h4>Activities</h4><ul><li>Sequence Recall and Memory Matching</li><li>Video Story Recall</li><li>Shape Drawing and Recognition with adaptive memory activities</li></ul><h4>AI and monitoring</h4><p>Difficulty adjusts according to individual performance. A CNN-based model recognises and classifies shapes drawn by learners, with YOLOv8 included in the machine-learning stack. Sinhala audio guidance and interactive feedback support engagement while accuracy, response time, errors, attempts, completion, and trends are recorded.</p></article>
+          </div>
+        </div>
         <article class="tech">
-          <div class="tech-intro">
-            <h3>Technologies Used</h3>
-            <p>
-              <strong>Proposed technologies:</strong> The icons below reflect
-              technologies named in the project proposals.
-              <mark
-                >TODO: confirm final implementation technologies and
-                versions.</mark
-              >
-            </p>
-          </div>
-          <div class="tech-grid" aria-label="Proposed technology stack">
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-react.svg"
-                alt="React.js logo"
-                loading="lazy"
-              /><span>React.js</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-node.svg"
-                alt="Node.js logo"
-                loading="lazy"
-              /><span>Node.js</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-express.svg"
-                alt="Express.js logo"
-                loading="lazy"
-              /><span>Express.js</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-mongodb.svg"
-                alt="MongoDB logo"
-                loading="lazy"
-              /><span>MongoDB</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-firebase-auth.svg"
-                alt="Firebase Authentication logo"
-                loading="lazy"
-              /><span>Firebase Authentication</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-firestore.svg"
-                alt="Cloud Firestore logo"
-                loading="lazy"
-              /><span>Cloud Firestore</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-python.svg"
-                alt="Python logo"
-                loading="lazy"
-              /><span>Python</span>
-            </div>
-            <div class="tech-item">
-              <img
-                src="assets/images/tech-ai.svg"
-                alt="Artificial intelligence and machine learning icon"
-                loading="lazy"
-              /><span>AI / ML</span>
-            </div>
-          </div>
+          <div class="tech-intro"><h3>Technologies Used</h3><p><strong>Platform technology stack:</strong> Frontend — React.js, JavaScript, Vite, Tailwind CSS, Framer Motion; Backend — Node.js, Express.js, REST APIs, Python, FastAPI; Data and authentication — MongoDB, Cloud Firestore, Firebase Authentication; AI/ML — CNNs, YOLOv8, MFCC, speech, handwriting, digit, and shape recognition; Deployment — Vercel and Microsoft Azure; Version control — Git, GitHub, and npm.</p></div>
+          <div class="tech-grid" aria-label="Key technology stack"><div class="tech-item"><img src="assets/images/tech-react.svg" alt="React.js logo" loading="lazy"><span>React.js</span></div><div class="tech-item"><img src="assets/images/tech-node.svg" alt="Node.js logo" loading="lazy"><span>Node.js</span></div><div class="tech-item"><img src="assets/images/tech-express.svg" alt="Express.js logo" loading="lazy"><span>Express.js</span></div><div class="tech-item"><img src="assets/images/tech-mongodb.svg" alt="MongoDB logo" loading="lazy"><span>MongoDB</span></div><div class="tech-item"><img src="assets/images/tech-firebase-auth.svg" alt="Firebase Authentication logo" loading="lazy"><span>Firebase Authentication</span></div><div class="tech-item"><img src="assets/images/tech-python.svg" alt="Python logo" loading="lazy"><span>Python</span></div><div class="tech-item"><img src="assets/images/tech-ai.svg" alt="CNN-based recognition icon" loading="lazy"><span>CNN Models</span></div><div class="tech-item"><img src="assets/images/tech-yolo.svg" alt="YOLOv8 logo" loading="lazy"><span>YOLOv8</span></div></div>
         </article>
+        <article class="overview contribution"><h3>Expected Contribution</h3><p>Smart Learn brings together four specialised learning components within an accessible Sinhala-language educational platform. It integrates AI-assisted interaction, adaptive educational activities, game-based practice, and performance monitoring across reading, handwriting, numerical learning, and working-memory tasks.</p><p><strong>Scope note:</strong> Smart Learn is intended as an educational support tool and does not independently provide clinical diagnosis of neurodevelopmental or learning disorders.</p></article>
       </section>
       <section id="milestones" class="tint timeline-section">
         <div class="heading">

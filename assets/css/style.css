@@ -1200,6 +1200,8 @@ footer {
     overflow-wrap: anywhere
 }
 
+.module-detail{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.25rem;padding:1.6rem;border:1px solid #cfe5e5;border-radius:.7rem;background:#f5fbfb}.module-detail h3{margin:0;font:1.7rem Georgia,serif}.module-detail h4{margin:0 0 .25rem;color:var(--teal);font-size:.9rem}.module-detail p{margin:.55rem 0;color:var(--muted);font-size:.92rem}.module-detail h4:not(:first-child){margin-top:1rem}@media(max-width:650px){.module-detail{grid-template-columns:1fr;gap:1rem}}
+
 @media(max-width:850px) {
     .tech-grid {
         grid-template-columns: repeat(3, 1fr)
@@ -1285,3 +1287,17 @@ footer {
 
 /* Centre the theme control between the brand and the navigation */
 .theme-toggle{position:absolute;top:50%;left:50%;margin:0;transform:translate(-50%,-50%)}
+
+/* Pending resource cards must not retain their light-mode background */
+[data-theme="dark"] .resources article.pending{background:#132a42!important;border-color:var(--line)}
+[data-theme="dark"] .resources article.pending h3{color:var(--ink)}
+[data-theme="dark"] .resources article.pending p,[data-theme="dark"] .resources article.pending span{color:var(--muted)}
+
+/* Research-domain panels that use fixed light-mode surfaces */
+[data-theme="dark"] .method{background:#132a42;color:var(--ink)}
+[data-theme="dark"] .method li{background:#1e4266}
+[data-theme="dark"] .module-detail{background:#132a42;border-color:var(--line)}
+[data-theme="dark"] .module-detail h3{color:var(--ink)}
+
+/* Four research-component cards */
+.components{margin-top:2rem}.components-heading{margin-bottom:1rem}.components-heading h3{margin:0;font:1.9rem Georgia,serif}.component-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.component-card{padding:1.4rem;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:.7rem;background:#fff}.component-card h3{margin:0;font:1.5rem Georgia,serif}.component-card h4{margin:1.1rem 0 .35rem;color:var(--teal);font-size:.83rem;letter-spacing:.06em;text-transform:uppercase}.component-card p,.component-card li{color:var(--muted);font-size:.87rem}.component-card .component-lead{margin:.6rem 0 0;color:var(--ink);font-weight:650}.component-card ul{margin:.4rem 0;padding-left:1.15rem}.component-card li+li{margin-top:.28rem}.contribution{margin-top:1.25rem!important}[data-theme="dark"] .component-card{background:#132a42;border-color:var(--line)}[data-theme="dark"] .component-card .component-lead{color:var(--ink)}@media(max-width:650px){.component-grid{grid-template-columns:1fr}.component-card{padding:1.15rem}}
