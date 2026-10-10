@@ -826,8 +826,13 @@ textarea:focus-visible {
     border: 3px solid #dceaf4
 }
 
-.proposal-group {
+.proposal-group,
+.report-group {
     grid-column: span 2
+}
+
+.resources .awaiting-link {
+    color: var(--muted)
 }
 
 .proposal-list {
@@ -854,8 +859,19 @@ textarea:focus-visible {
     text-decoration: underline
 }
 
+.proposal-list .disabled-document {
+    display: block;
+    margin: 0;
+    padding: .48rem 0;
+    color: var(--muted);
+    font-size: .84rem;
+    font-weight: 750;
+    cursor: not-allowed
+}
+
 @media(max-width:650px) {
-    .proposal-group {
+    .proposal-group,
+    .report-group {
         grid-column: auto
     }
 }

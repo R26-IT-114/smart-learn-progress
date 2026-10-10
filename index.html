@@ -683,7 +683,7 @@
         <div class="heading">
           <p class="eyebrow">Project resources</p>
           <h2>Documents</h2>
-          <p>Only files present in this repository have working links.</p>
+          <p>Project checklists, proposals, and final research reports.</p>
         </div>
         <div class="resources">
           <article>
@@ -736,17 +736,59 @@
               </li>
             </ul>
           </article>
+          <article>
+            <b>PDF</b><small>Checklist Document</small>
+            <h3>Checklist 1</h3>
+            <p>First project checklist submission.</p>
+            <a
+              href="https://drive.google.com/file/d/1NKQXXN6dDIsgdHah_WL_cPKlXmG5sWD4/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+              >Open document ↗</a
+            >
+          </article>
           <article class="pending">
-            <b>PDF</b><small>Checklist Documents</small>
-            <h3>Checklist documents</h3>
-            <p>Awaiting upload.</p>
+            <b>PDF</b><small>Checklist Document</small>
+            <h3>Checklist 2</h3>
+            <p>Second project checklist submission.</p>
+            <span>Coming soon</span>
+          </article>
+          <article class="report-group pending">
+            <b>PDF</b><small>Final Reports</small>
+            <h3>Individual Final Reports</h3>
+            <p>Individual final reports from all four project members.</p>
+            <ul class="proposal-list">
+              <li>
+                <span class="disabled-document" aria-disabled="true"
+                  >Abeysinghe A. H. M. P. D.</span
+                >
+              </li>
+              <li>
+                <span class="disabled-document" aria-disabled="true"
+                  >Madhurangi H. A. P. D.</span
+                >
+              </li>
+              <li>
+                <span class="disabled-document" aria-disabled="true"
+                  >Senadeera H. A. P. N.</span
+                >
+              </li>
+              <li>
+                <span class="disabled-document" aria-disabled="true"
+                  >Senavirathna B. W. J. D.</span
+                >
+              </li>
+            </ul>
             <span>Coming soon</span>
           </article>
           <article class="pending">
-            <b>PDF</b><small>Final Documents</small>
-            <h3>Final documents</h3>
-            <p>Awaiting upload.</p>
-            <span>Coming soon</span>
+            <b>PDF</b><small>Final Report</small>
+            <h3>Group Final Report</h3>
+            <p>
+              Complete group research report, including results and
+              conclusions.
+            </p>
+            <span>Awaiting upload</span>
           </article>
         </div>
       </section>
@@ -965,7 +1007,8 @@
       const menu = document.querySelector(".menu"),
         nav = document.querySelector("nav"),
         themeToggle = document.querySelector(".theme-toggle"),
-        themeToggleText = document.querySelector(".theme-toggle-text");
+        themeToggleText = document.querySelector(".theme-toggle-text"),
+        navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
 
       const applyTheme = (theme) => {
         document.documentElement.dataset.theme = theme;
@@ -1004,12 +1047,61 @@
         const open = nav.classList.toggle("open");
         menu.setAttribute("aria-expanded", open);
       });
-      document.querySelectorAll("nav a").forEach((a) =>
-        a.addEventListener("click", () => {
+      const setActiveNavLink = (activeLink) => {
+        navLinks.forEach((link) => {
+          const isActive = link === activeLink;
+          link.classList.toggle("active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      const updateActiveNavLink = () => {
+        const headerOffset = document.querySelector("header").offsetHeight;
+        const activationLine = headerOffset + window.innerHeight * 0.25;
+        let activeLink = navLinks[0];
+
+        navLinks.forEach((link) => {
+          const section = document.querySelector(link.getAttribute("href"));
+          if (section && section.getBoundingClientRect().top <= activationLine) {
+            activeLink = link;
+          }
+        });
+
+        setActiveNavLink(activeLink);
+      };
+
+      let scrollUpdatePending = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!scrollUpdatePending) {
+            window.requestAnimationFrame(() => {
+              updateActiveNavLink();
+              scrollUpdatePending = false;
+            });
+            scrollUpdatePending = true;
+          }
+        },
+        { passive: true },
+      );
+
+      window.addEventListener("resize", updateActiveNavLink);
+      window.addEventListener("hashchange", updateActiveNavLink);
+
+      navLinks.forEach((link) =>
+        link.addEventListener("click", () => {
+          setActiveNavLink(link);
           nav.classList.remove("open");
           menu.setAttribute("aria-expanded", "false");
         }),
       );
+
+      updateActiveNavLink();
+
       document.querySelector("#form").addEventListener("submit", (e) => {
         e.preventDefault();
         location.href =
