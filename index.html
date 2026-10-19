@@ -949,22 +949,29 @@
             ><br />Phone: <strong>+94 705799581</strong>
           </p>
         </div>
-        <form id="form">
+        <form id="form" action="https://formsubmit.co/smartlearnprogress@gmail.com" method="POST">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
           <label for="subject">Email subject</label
           ><input
             id="subject"
+            name="_subject"
+            required
+            maxlength="200"
             value="Smart Learn research project enquiry"
           /><label for="message">Message</label
           ><textarea
             id="message"
+            name="message"
+            required
+            maxlength="10000"
             rows="4"
             placeholder="Write your message"
           ></textarea
-          ><button class="button" type="submit">Open email draft ↗</button
-          ><small
-            >This opens your email application; no website backend is
-            used.</small
-          >
+          ><input type="text" name="_honey" hidden tabindex="-1" autocomplete="off" />
+          <button class="button" type="submit">Send inquiry</button>
+          <small>Your inquiry will be sent to smartlearnprogress@gmail.com via FormSubmit.</small>
+          <small id="form-status" role="status" aria-live="polite"></small>
         </form>
       </section>
     </main>
@@ -1102,13 +1109,40 @@
 
       updateActiveNavLink();
 
-      document.querySelector("#form").addEventListener("submit", (e) => {
+      document.querySelector("#form").addEventListener("submit", async (e) => {
         e.preventDefault();
-        location.href =
-          "mailto:smartlearnprogress@gmail.com?subject=" +
-          encodeURIComponent(subject.value) +
-          "&body=" +
-          encodeURIComponent(message.value);
+        const form = e.currentTarget;
+        const button = form.querySelector('button[type="submit"]');
+        const status = document.querySelector("#form-status");
+        if (button.disabled || !form.reportValidity()) return;
+        const fields = Object.fromEntries(new FormData(form));
+        if (fields._honey) return;
+        if (!fields.message.trim() || !fields._subject.trim()) {
+          status.textContent = "Please enter a subject and message.";
+          return;
+        }
+        button.disabled = true;
+        button.textContent = "Sending…";
+        status.textContent = "Sending your inquiry…";
+        try {
+          const response = await fetch("https://formsubmit.co/ajax/smartlearnprogress@gmail.com", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify(fields),
+            signal: AbortSignal.timeout(30000),
+          });
+          const result = await response.json();
+          if (!response.ok || (result.success !== true && result.success !== "true")) {
+            throw new Error("Submission was not accepted");
+          }
+          status.textContent = "Thank you! Your inquiry has been submitted.";
+          form.reset();
+        } catch {
+          status.textContent = "We could not confirm your inquiry was sent. Please try again or email smartlearnprogress@gmail.com directly.";
+        } finally {
+          button.disabled = false;
+          button.textContent = "Send inquiry";
+        }
       });
     </script>
   </body>
