@@ -950,6 +950,7 @@
           </p>
         </div>
         <form id="form" action="https://formsubmit.co/smartlearnprogress@gmail.com" method="POST">
+          <input type="hidden" name="_template" value="box" />
           <label for="email">Your email</label>
           <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
           <label for="subject">Email subject</label
@@ -975,6 +976,7 @@
         </form>
       </section>
     </main>
+    <div id="inquiry-toast" class="inquiry-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
     <footer>
       <div class="footer-grid">
         <div>
@@ -1109,6 +1111,18 @@
 
       updateActiveNavLink();
 
+      const inquiryToast = document.querySelector("#inquiry-toast");
+      let inquiryToastTimer;
+      const showInquirySuccess = () => {
+        clearTimeout(inquiryToastTimer);
+        inquiryToast.textContent = "✓ Thank you! Your inquiry has been submitted.";
+        inquiryToast.hidden = false;
+        inquiryToastTimer = setTimeout(() => {
+          inquiryToast.hidden = true;
+          inquiryToast.textContent = "";
+        }, 4000);
+      };
+
       document.querySelector("#form").addEventListener("submit", async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -1135,7 +1149,8 @@
           if (!response.ok || (result.success !== true && result.success !== "true")) {
             throw new Error("Submission was not accepted");
           }
-          status.textContent = "Thank you! Your inquiry has been submitted.";
+          status.textContent = "";
+          showInquirySuccess();
           form.reset();
         } catch {
           status.textContent = "We could not confirm your inquiry was sent. Please try again or email smartlearnprogress@gmail.com directly.";
